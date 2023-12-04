@@ -1,3 +1,6 @@
+# Development
+assets/labs/*
+
 # Logs
 logs
 *.log
