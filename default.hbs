@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- default.hbs -->
+<html {{#match @site.locale "=" "ar"}}lang="{{@site.locale}}" dir="rtl"{{else}}lang="{{@site.locale}}"{{/match}}>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=1.0" />
+        <link rel="preload" href="{{asset "css/screen.css"}}" type="text/css" as="style" />
+        <link rel="preload" href="{{asset "css/media.css"}}" type="text/css" as="style" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/" />
+        <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/portal@~2.36/umd/portal.min.js" />
+        <link rel="prefetch" href="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" />
+        <link rel="stylesheet" href="{{asset "css/screen.css"}}" type="text/css" media="screen" />
+        <link rel="stylesheet" href="{{asset "css/media.css"}}" type="text/css" media="screen" />
+        <script type="module" src="{{asset "js/application.mjs"}}"></script>
+        <title>{{#is "home"}}{{@site.title}} &#8211; {{@site.description}}{{else is "page, post"}}{{meta_title}} &#8211; {{@site.title}}{{else}}{{meta_title}}{{/is}}</title>
+        {{ghost_head}}
+    </head>
+    <body class="{{body_class}} flexy">
+        <header class="flexy gapy-half content-width start">
+            {{#if @site.logo}}<figure class="site-logo">
+                <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{@site.logo}}" alt="{{@site.title}}" /></a>
+            </figure>{{else}}<h1><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a></h1>
+            <h2>{{@site.description}}</h2>{{/if}}
+            {{#if @site.navigation}}{{navigation}}{{/if}}
+        </header>
+        {{{body}}}
+        <footer class="flexy gapy-1">
+            <div class="flexy row gapy-3">
+                <p><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</p>
+                <p>Members&colon; {{total_members}}</p>
+                <p>Paid members&colon; {{total_paid_members}}</p>
+            </div>
+            {{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{/if}}
+        </footer>
+        {{ghost_foot}}
+    </body>
+</html>

@@ -1,0 +1,36 @@
+{{!< default}}
+<!-- post.hbs -->
+{{#is "post"}}
+{{#post}}<progress class="width-full" max="100" value="35" aria-label="Reading progress"></progress>
+<section class="flexy row palette">
+    {{#match @page.show_title_and_feature_image}}{{#if feature_image}}<figure class="flexy has-bg" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})" title="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" />
+        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+    </figure>{{/if}}
+    <hgroup class="flexy start gapy-half">
+        <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
+        <ul class="flexy row start-content gapy-1 width-full">
+            <li>By&colon; {{#primary_author}}<a href="{{url absolute='true'}}" title="{{name}}">{{name}}{{/primary_author}}</a></li>
+            <li>Published&colon; <time datetime="{{date published_at format="YYYY-MM-DD"}}">{{date published_at format="DD MMMM YYYY"}}</time> at <time datetime="{{date published_at format="h:mm A"}}">{{date published_at format="h:mm A"}}</time></li>
+            <li>Updated&colon; <time datetime="{{date updated_at format="YYYY-MM-DD"}}">{{date updated_at format="DD MMMM YYYY"}}</time> at <time datetime="{{date updated_at format="h:mm A"}}">{{date updated_at format="h:mm A"}}</time></li>
+            <li class="reading-time">Reading time&colon; {{reading_time minute=(t "Only a minute") minutes=(t "Takes % minutes")}}</li>
+        </ul>
+        <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="35"}}{{/if}}</p>
+    </hgroup>{{/match}}
+</section>
+<main id="content" class="{{post_class}} flexy start-content gapy-1 content-width" role="main">
+    {{content}}
+    {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" as |extra|}}{{#if extra}}<h3>More posts by this author&colon;</h3>
+    <ol class="flexy gapy-half width-full">
+        {{#foreach posts}}<li><a href="{{url}}">{{title}}</a></li>{{/foreach}}
+    </ol>{{else}}<p>There were no more posts by this author&hellip;</p>{{/if}}{{/get}}
+</main>
+{{#if comments}}<section class="flexy content-width start">
+    <h3>Discussion</h3>
+    <a href="/guides">Community guidelines</aclass="flexy">
+    {{comment_count empty="There were no comments" singular="comment" plural="comments" autowrap="p" class="comments-count"}}
+    {{comments title="Join the discussion" count=false mode="auto" saturation=60}}
+</section>{{/if}}
+{{> "cta" heading="Sign up now"}}
+{{/post}}
+{{/is}}

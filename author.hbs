@@ -1,0 +1,30 @@
+{{!< default}}
+<!-- author.hbs -->
+{{#is "author"}}
+{{#author}}
+{{#if cover_image}}<figure class="flexy has-bg" style="background-image: url({{img_url cover_image absolute='true'}})">
+    <img src="{{img_url cover_image absolute='true'}}" alt="Cover image" title="{{name}}" loading="lazy" />
+</figure>{{/if}}
+<section class="flexy row palette">
+    {{#if profile_image}}<figure class="flexy">
+        <img src="{{img_url profile_image absolute='true'}}" alt="Profile image" title="{{name}}" />
+    </figure>{{/if}}
+    <hgroup class="flexy start gapy-half">
+        <h2 id="{{slug}}">{{name}}</h2>
+        {{#if bio}}<p>{{bio}}</p>{{/if}}
+        <ul class="flexy row start-content gapy-1 width-full">
+            <li>{{plural ../pagination.total empty="No posts" singular="% post" plural="% posts"}}</li>
+            {{#if location}}<li><address>{{location}}</address></li>{{/if}}
+            {{#if facebook}}<li><a href="{{facebook}}" title="Facebook" target="_blank">{{readable_url facebook}}</a></li>{{/if}}
+            {{#if twitter}}<li><a href="{{twitter}}" title="X &lpar;formerly Twitter&rpar;" target="_blank">{{readable_url twitter}}</a></li>{{/if}}
+            {{#if website}}<li><a href="{{website}}" title="Personal website" target="_blank">{{readable_url website}}</a></li>{{/if}}
+            <li><a href="{{url absolute='true'}}" title="Profile URL">{{readable_url url absolute="true"}}</a></li>
+        </ul>
+    </hgroup>
+</section>
+{{/author}}
+<main id="content" class="{{post_class}} flexy width-full" role="main">
+    {{> "loop"}}
+</main>
+{{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
+{{/is}}

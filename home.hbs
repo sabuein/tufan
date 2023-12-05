@@ -1,0 +1,13 @@
+{{!< default}}
+<!-- home.hbs -->
+{{#is "home"}}
+<main id="content" class="{{post_class}} flexy gapy-1 content-width" role="main">
+    {{> "loop-featured"}}
+    {{> "loop-posts"}}
+    {{> "loop-tags"}}
+    {{#match @site.recommendations_enabled}}<section class="flexy gapy-half content-width">
+        <h3>Recommendations</h3>
+        {{recommendations limit="10" order="title asc"}}
+    </section>{{/match}}
+</main>
+{{/is}}

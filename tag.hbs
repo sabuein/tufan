@@ -1,0 +1,21 @@
+{{!< default}}
+<!-- tag.hbs -->
+{{#is "tag"}}
+{{#tag}}
+<section class="flexy row palette">
+    {{#if feature_image}}<figure class="flexy has-bg" style="{{#if accent_color}}background-color: {{accent_color}}; {{/if}}background-image: url({{img_url feature_image absolute='true'}})">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{title}}" />
+    </figure>{{/if}}
+    <hgroup class="flexy start gapy-half">
+        <h1 id="{{slug}}" title="{{name}}">{{name}}</h1>
+        {{#if description}}<p>{{description}}</p>{{else}}A collection of {{plural ../pagination.total empty="zero posts" singular="% post" plural="% posts"}}&period;{{/if}}
+    </hgroup>
+</section>
+{{> "loop-featured"}}
+{{!--{{#tag}}{{> "loop-posts"}}{{/tag}}--}}
+<main id="content" class="{{post_class}} flexy width-full" role="main">
+    {{#has slug="opt"}}{{> "governorates-filters"}}{{/has}}{{/tag}}
+    {{> "loop"}}
+</main>
+{{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
+{{/is}}

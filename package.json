@@ -1,0 +1,50 @@
+{
+    "name": "tufan",
+    "description": "A brief explanation of your theme",
+    "demo": "demo",
+    "version": "1.0.0",
+    "license": "MIT",
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "author": {
+        "name": "Salaheddin AbuEin",
+        "email": "sabuein@gmail.com",
+        "url": "https://sabuein.github.io/"
+    },
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.jpg",
+        "mobile": "assets/screenshot-mobile.jpg"
+    },
+    "docs": "https://tufan.uk/docs/",
+    "config": {
+        "posts_per_page": 10,
+        "image_sizes": {},
+        "card_assets": true
+    },
+    "scripts": {
+        "link": "ln -s /home/sabuein/my/projects/rapid-is /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
+        "test": "npx gscan .",
+        "start": "ghost start -d ~/my/instances/ghost/",
+        "restart": "ghost restart -d ~/my/instances/ghost/",
+        "stop": "ghost stop -d ~/my/instances/ghost/",
+        "update": "ghost update -d ~/my/instances/ghost/",
+        "debug": "ghost run -D -d ~/my/instances/ghost/",
+        "zip": "zip -r /home/sabuein/Desktop/tufan.zip * -x *.zip /assets/labs/* .gitignore"
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sabuein/tufan.git"
+    },
+    "bugs": "https://github.com/sabuein/tufan/issues",
+    "contributors": ["https://github.com/sabuein/tufan/graphs/contributors"],
+    "browserslist": [
+        "defaults"
+    ],
+    "type": "module"
+}
