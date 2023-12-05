@@ -1,0 +1,9 @@
+<!-- partials/loop-posts.hbs -->
+<section class="flexy gapy-half content-width">
+    <hgroup class="flexy">
+        <h3>You might also like&hellip;</h3>
+    </hgroup>
+    <div class="flexy gapy-half">
+        {{#get "posts" visibility="all" limit="all" filter="featured:false"}}{{#foreach posts}}<p data-index="{{@index}}" data-number="{{@number}}"><a href="{{url}}">{{title}}</a></p>{{else}}<p>There were no posts&hellip;</p>{{/foreach}}{{/get}}
+    </div>
+</section>

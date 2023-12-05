@@ -1,0 +1,189 @@
+/* Debugging */
+
+*.debug {
+    outline: thick solid red;
+}
+
+/* Globals */
+
+* {
+    background-color: inherit;
+}
+
+*::after,
+*::before {
+    background-color: transparent;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    opacity: 1;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: inherit;
+}
+
+:root {
+    --accent-color: var(--ghost-accent-color);
+    --warning-color: red;
+}
+
+/* Classes */
+
+*.flexy {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    place-content: center;
+    align-items: safe center;
+}
+
+*.row {
+    flex-direction: row;
+}
+
+*.has-bg {
+    background-color: var(--accent-color);
+    background-image: none;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-clip: content-box;
+    height: 25rem;
+    width: 100dvw;
+    max-width: 100%;
+    user-select: none;
+}
+
+*.has-bg img {
+    display: none;
+}
+
+*.get-posts-error {
+    color: var(--warning-color);
+}
+
+a[type="text/html"] {
+    color: currentColor;
+}
+
+/* Navigation */
+
+nav,
+main ol {
+    align-self: center;
+}
+
+nav ul,
+*.palette hgroup ul {
+    list-style-type: none;
+}
+
+/* Post */
+
+*.palette {
+    gap: 3rem;
+}
+
+*.loopy,
+*.palette figure {
+    width: 25rem;
+    flex-basis: 25rem;
+}
+
+*.palette hgroup {
+    width: 100dvw;
+    max-width: 65%;
+    flex: 1 0 65%;
+    align-content: flex-start;
+}
+
+*.gapy-half {
+    gap: .5rem;
+}
+
+*.gapy-1 {
+    gap: 1rem;
+}
+
+*.gapy-2 {
+    gap: 2rem;
+}
+
+*.gapy-3 {
+    gap: 3rem;
+}
+
+*.start-content {
+    justify-content: flex-start;
+}
+
+*.start {
+    align-items: flex-start;
+}
+
+*.start-content {
+    align-content: flex-start;
+}
+
+*.evenly {
+    justify-content: space-evenly;
+}
+
+body {
+    width: 100dvw;
+    max-width: 100%;
+    gap: 1rem;
+}
+
+/* Progress bar*/
+
+progress:not([value]) {
+    display: none;
+}
+
+progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 3rem;
+    flex-basis: 3rem;
+    color: black;
+    background-color: var(--accent-color);
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+/* Required by Ghost (and more!) */
+
+*.content-width {
+    width: 100dvw;
+    max-width: 85%;
+    flex: 5 1 85%;
+}
+
+#announcement-bar-root,
+*.width-full,
+*.kg-width-full,
+*.palette {
+    width: 100dvw;
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+
+*.kg-width-wide {
+    color: currentColor;
+}

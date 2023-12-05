@@ -1,0 +1,9 @@
+<!-- partials/loop-tags.hbs -->
+<section class="flexy gapy-half content-width">
+    <hgroup class="flexy">
+        <h3>Tags&hellip;</h3>
+    </hgroup>
+    <div class="flexy gapy-half">
+        {{#get "tags" visibility="all" limit="all" include="count.posts" order="count.posts desc"}}{{#foreach tags}}<p class="flexy row start gapy-half" data-index="{{@index}}" data-number="{{@number}}"><a href="{{url}}">{{name}}</a> &lpar;{{count.posts}}&rpar;</p>{{else}}<p>There were no tags&hellip;</p>{{/foreach}}{{/get}}
+    </div>
+</section>
