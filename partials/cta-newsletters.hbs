@@ -1,0 +1,13 @@
+<!-- partials/cta.hbs -->
+<aside class="call-to-action flexy gapy-half width-full">
+    {{#if heading}}<h3 id="cta-newsletter" title="{{heading}}">{{heading}}</h3>{{else}}<h3 id="cta-newsletter" title="Subscribe for diverse content and updates">Subscribe for diverse content and updates</h3>{{/if}}
+    <form data-members-form="subscribe" class="flexy start gapy-half content-width">
+        <label for="memberName" class="flexy row width-full" title="Name">Name<input type="txt" name="name" id="memberName" autocomplete="name" title="Please enter your full name" required data-members-name /></label>
+        <label for="memberEmail" class="flexy row width-full" title="Email">Email<input type="email" name="email" id="memberEmail" autocomplete="email" title="Please enter a valid email address" required data-members-email /></label>
+        {{#get "newsletters"}}{{#foreach newsletters}}<label for="newsletter-{{@number}}" class="flexy row width-full" title="Subscribe to {{name}}"><input type="checkbox" value="{{name}}" id="newsletter-{{@number}}" data-members-newsletter />{{name}}</label>{{else}}<p title="There were no newsletters">There were no newsletters&hellip;</p>{{/foreach}}{{/get}}
+        <div class="flexy controls width-full">
+            <input type="submit" value="Subscribe" title="Subscribe" />
+            <input type="reset" value="Reset" title="Reset" />
+        </div>
+    </form>
+</aside>

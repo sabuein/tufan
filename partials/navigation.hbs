@@ -2,8 +2,9 @@
 {{#if isSecondary}}<nav class="flexy">
     <ul class="flexy row gapy-1" role="menu">
         {{#foreach navigation}}<li class="nav-{{slug}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
+        {{> "social-media"}}
     </ul>
-</nav>{{else}}<nav class="flexy row evenly gapy-3 width-full">
+</nav>{{else}}<nav class="flexy row between gapy-3 content-width">
     <ul class="flexy row gapy-1" role="menu">
         {{#foreach navigation}}<li class="{{link_class for=(url) class=(concat "nav-" slug)}}{{#if current}} nav-current{{/if}}" role="menuitem"><a href="{{url absolute='true'}}" title="{{label}}">{{label}}</a></li>{{/foreach}}
     </ul>

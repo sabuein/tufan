@@ -1,0 +1,7 @@
+<!-- partials/participate.hbs -->
+{{#if comments}}<section class="flexy content-width start">
+    <h3>Discussion</h3>
+    <a href="/guides">Community guidelines</aclass="flexy">
+    {{comment_count empty="There were no comments" singular="comment" plural="comments" autowrap="p" class="comments-count"}}
+    {{comments title="Join the discussion" count=false mode="auto" saturation=60}}
+</section>{{/if}}

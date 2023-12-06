@@ -1,0 +1,11 @@
+<!-- partials/loop-author.hbs -->
+<section class="looping flexy gapy-half width-full">
+    <hgroup class="flexy">
+        <h3 id="more-posts" title="More posts by this author">More posts by this author&colon;</h3>
+    </hgroup>
+    <div class="flexy gapy-1 content-width">{{#get "posts" visibility="all" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit=@config.posts_per_page as |article|}}
+        {{#if article}}<ol class="flexy gapy-half">
+            {{#foreach article}}<li data-index="{{@index}}" data-number="{{@number}}"><a href="{{url}}" title="{{title}}">{{title}}</a></li>{{/foreach}}
+        </ol>{{else}}<p title="There were no more posts by this author">There were no more posts by this author&hellip;</p>{{/if}}
+    {{/get}}</div>
+</section>

@@ -1,0 +1,9 @@
+<!-- partials/feature.hbs -->
+<section class="looping flexy gapy-half width-full">
+    <hgroup class="flexy">
+        <h3 id="featured-posts" title="Featured posts">Featured posts&colon;</h3>
+    </hgroup>
+    <div class="flexy gapy-half content-width">
+        {{#get "posts" visibility="all" include="tags" filter="featured:true" limit=@config.posts_per_page as |article|}}{{#if article}}{{#foreach article}}<p data-index="{{@index}}" data-number="{{@number}}"><a href="{{slug}}" title="{{title}}">{{title}}</a></p>{{/foreach}}{{else}}<p title="There were no featured posts">There were no featured posts&hellip;</p>{{/if}}{{/get}}
+    </div>
+</section>
