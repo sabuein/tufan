@@ -2,20 +2,27 @@
 <!-- tag.hbs -->
 {{#is "tag"}}
 {{#tag}}
+{{#if accent_color}}<style>
+    :root {
+        --accent-color: {{accent_color}};
+        --brandcolor: {{accent_color}};
+    }
+</style>{{/if}}
 <section class="flexy row palette">
     {{#if feature_image}}<figure class="flexy has-bg" style="{{#if accent_color}}background-color: {{accent_color}}; {{/if}}background-image: url({{img_url feature_image absolute='true'}})">
         <img src="{{img_url feature_image absolute='true'}}" alt="{{title}}" />
     </figure>{{/if}}
     <hgroup class="flexy start gapy-half">
-        <h1 id="{{slug}}" title="{{name}}">{{name}}</h1>
-        {{#if description}}<p>{{description}}</p>{{else}}A collection of {{plural ../pagination.total empty="zero posts" singular="% post" plural="% posts"}}&period;{{/if}}
+        <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}" title="{{name}}"><a href="{{url absolute='true'}}" title="Copy topic URL" type="text/html">&#128279;</a><span title="{{name}}">{{name}}</span></h2>
+        {{#if description}}<p class="width-full">{{description}}</p>{{else}}A collection of {{plural ../pagination.total empty="zero posts" singular="% post" plural="% posts"}}&period;{{/if}}
     </hgroup>
 </section>
-{{> "loop-featured"}}
+{{> "loop-feature"}}
 {{!--{{#tag}}{{> "loop-posts"}}{{/tag}}--}}
 <main id="content" class="{{post_class}} flexy width-full" role="main">
     {{#has slug="opt"}}{{> "governorates-filters"}}{{/has}}{{/tag}}
     {{> "loop"}}
 </main>
 {{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
+{{> "cta-newsletters" heading="Sign up for a rich mix of content"}}
 {{/is}}

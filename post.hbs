@@ -1,36 +1,44 @@
 {{!< default}}
 <!-- post.hbs -->
 {{#is "post"}}
-{{#post}}<progress class="width-full" max="100" value="35" aria-label="Reading progress"></progress>
+{{#post}}
+<progress class="flexy width-full" max="100" value="55" title="Reading progress" aria-label="Reading progress"></progress>
+{{#primary_tag}}{{#if accent_color}}<style>
+    :root {
+        --accent-color: {{accent_color}};
+        --brandcolor: {{accent_color}};
+    }
+
+    *.kg-button-card a.kg-btn-accent {
+        background-color: {{accent_color}};
+    }
+</style>{{/if}}{{/primary_tag}}
 <section class="flexy row palette">
     {{#match @page.show_title_and_feature_image}}{{#if feature_image}}<figure class="flexy has-bg" style="{{#primary_tag}}{{#if accent_color}}background-color: {{accent_color}}; {{/if}}{{/primary_tag}}background-image: url({{img_url feature_image absolute='true'}})" title="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
         <img src="{{img_url feature_image absolute='true'}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" title="{{title}}" loading="lazy" />
-        {{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}
+        {{#if feature_image_caption}}<figcaption class="width-full">{{feature_image_caption}}</figcaption>{{/if}}
     </figure>{{/if}}
     <hgroup class="flexy start gapy-half">
-        <h1 id="{{slug}}" title="{{title}}">{{title}}</h1>
-        <ul class="flexy row start-content gapy-1 width-full">
-            <li>By&colon; {{#primary_author}}<a href="{{url absolute='true'}}" title="{{name}}">{{name}}{{/primary_author}}</a></li>
-            <li>Published&colon; <time datetime="{{date published_at format="YYYY-MM-DD"}}">{{date published_at format="DD MMMM YYYY"}}</time> at <time datetime="{{date published_at format="h:mm A"}}">{{date published_at format="h:mm A"}}</time></li>
-            <li>Updated&colon; <time datetime="{{date updated_at format="YYYY-MM-DD"}}">{{date updated_at format="DD MMMM YYYY"}}</time> at <time datetime="{{date updated_at format="h:mm A"}}">{{date updated_at format="h:mm A"}}</time></li>
-            <li class="reading-time">Reading time&colon; {{reading_time minute=(t "Only a minute") minutes=(t "Takes % minutes")}}</li>
+        <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}" title="{{title}}"><a href="{{url absolute='true'}}" title="Copy post URL" type="text/html">&#128279;</a><span title="{{title}}">{{title}}</span></h2>
+        <ul class="meta flexy start-content width-full">
+            <li class="flexy"><span title="Published">Published&colon;</span><time datetime="{{date published_at format="YYYY-MM-DD"}}" title="{{date published_at format="DD MMMM YYYY"}}">{{date published_at format="DD MMMM YYYY"}}</time><span title="at">at</span><time datetime="{{date published_at format="h:mm A"}}" title="{{date published_at format="h:mm A"}}">{{date published_at format="h:mm A"}}</time></li>
+            <li class="flexy"><span title="Updated">Updated&colon;</span><time datetime="{{date updated_at format="YYYY-MM-DD"}}" title="{{date updated_at format="DD MMMM YYYY"}}">{{date updated_at format="DD MMMM YYYY"}}</time><span title="at">at</span><time datetime="{{date updated_at format="h:mm A"}}" title="{{date updated_at format="h:mm A"}}">{{date updated_at format="h:mm A"}}</time></li>
         </ul>
-        <p>{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt words="35"}}{{/if}}</p>
+        <ul class="meta flexy start-content width-full">
+            <li class="flexy"><span title="By">By&colon;</span>{{#primary_author}}<a href="{{url absolute='true'}}" title="{{name}}">{{name}}{{/primary_author}}</a></li>
+            <li class="flexy"><span title="Reading time">Reading time&colon;</span><span title="{{reading_time minute=(t "Only a minute") minutes=(t "Takes % minutes")}}">{{reading_time minute=(t "Only a minute") minutes=(t "Takes % minutes")}}</span></li>
+            <li class="flexy">{{tags visibility="public" separator='<span class="noselect" title="and">&oplus;</span>' prefix='<span title="Tagged in">Tagged in&colon;</span>' suffix='<span class="noselect" title="That&apos;s it&excl;">&#9989;</span>'}}</li>
+        </ul>
+        {{#if custom_excerpt}}<p title="Custom excerpt">{{custom_excerpt}}</p>{{/if}}
     </hgroup>{{/match}}
 </section>
-<main id="content" class="{{post_class}} flexy start-content gapy-1 content-width" role="main">
-    {{content}}
-    {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" as |extra|}}{{#if extra}}<h3>More posts by this author&colon;</h3>
-    <ol class="flexy gapy-half width-full">
-        {{#foreach posts}}<li><a href="{{url}}">{{title}}</a></li>{{/foreach}}
-    </ol>{{else}}<p>There were no more posts by this author&hellip;</p>{{/if}}{{/get}}
+<main id="content" class="{{post_class}} flexy content-width" role="main">
+    <div class="flexy start start-content gapy-1 content-width">
+        {{content}}
+    </div>
+    {{> "loop-author"}}
 </main>
-{{#if comments}}<section class="flexy content-width start">
-    <h3>Discussion</h3>
-    <a href="/guides">Community guidelines</aclass="flexy">
-    {{comment_count empty="There were no comments" singular="comment" plural="comments" autowrap="p" class="comments-count"}}
-    {{comments title="Join the discussion" count=false mode="auto" saturation=60}}
-</section>{{/if}}
-{{> "cta" heading="Sign up now"}}
+{{> "cta-newsletters" heading="Receive our latest content straight to your inbox"}}
+{{> "participate"}}
 {{/post}}
 {{/is}}

@@ -19,19 +19,19 @@
         {{ghost_head}}
     </head>
     <body class="{{body_class}} flexy">
-        <header class="flexy gapy-half content-width start">
-            {{#if @site.logo}}<figure class="site-logo">
+        <header class="flexy gapy-half start width-full">
+            {{#if @site.logo}}<figure id="site-logo" class="site-logo">
                 <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{@site.logo}}" alt="{{@site.title}}" /></a>
             </figure>{{else}}<h1><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a></h1>
-            <h2>{{@site.description}}</h2>{{/if}}
+            <h2 id="site-description" title="{{@site.description}}">{{@site.description}}</h2>{{/if}}
             {{#if @site.navigation}}{{navigation}}{{/if}}
         </header>
         {{{body}}}
-        <footer class="flexy gapy-1">
-            <div class="flexy row gapy-3">
-                <p><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</p>
-                <p>Members&colon; {{total_members}}</p>
-                <p>Paid members&colon; {{total_paid_members}}</p>
+        <footer class="flexy gapy-1 width-full">
+            <div class="flexy row gapy-2">
+                <p class="flexy row gapy-half"><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a><span title="Copyright">&copy;</span><span title="{{date format="YYYY"}}">{{date format="YYYY"}}</span></p>
+                <p title="Total members">Members&colon; {{total_members}}</p>
+                <p title="Total paid members">Paid members&colon; {{total_paid_members}}</p>
             </div>
             {{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{/if}}
         </footer>

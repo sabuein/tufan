@@ -2,7 +2,7 @@
 <!-- author.hbs -->
 {{#is "author"}}
 {{#author}}
-{{#if cover_image}}<figure class="flexy has-bg" style="background-image: url({{img_url cover_image absolute='true'}})">
+{{#if cover_image}}<figure class="flexy has-bg" style="background-image: url({{img_url cover_image absolute='true'}})" title="{{name}}">
     <img src="{{img_url cover_image absolute='true'}}" alt="Cover image" title="{{name}}" loading="lazy" />
 </figure>{{/if}}
 <section class="flexy row palette">
@@ -10,16 +10,15 @@
         <img src="{{img_url profile_image absolute='true'}}" alt="Profile image" title="{{name}}" />
     </figure>{{/if}}
     <hgroup class="flexy start gapy-half">
-        <h2 id="{{slug}}">{{name}}</h2>
-        {{#if bio}}<p>{{bio}}</p>{{/if}}
+        <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}" title="{{name}}"><a href="{{url absolute='true'}}" title="Copy contributor URL" type="text/html">&#128279;</a><span title="{{name}}">{{name}}</span></h2>
         <ul class="flexy row start-content gapy-1 width-full">
-            <li>{{plural ../pagination.total empty="No posts" singular="% post" plural="% posts"}}</li>
-            {{#if location}}<li><address>{{location}}</address></li>{{/if}}
-            {{#if facebook}}<li><a href="{{facebook}}" title="Facebook" target="_blank">{{readable_url facebook}}</a></li>{{/if}}
-            {{#if twitter}}<li><a href="{{twitter}}" title="X &lpar;formerly Twitter&rpar;" target="_blank">{{readable_url twitter}}</a></li>{{/if}}
-            {{#if website}}<li><a href="{{website}}" title="Personal website" target="_blank">{{readable_url website}}</a></li>{{/if}}
-            <li><a href="{{url absolute='true'}}" title="Profile URL">{{readable_url url absolute="true"}}</a></li>
+            <li title="Total posts">{{plural ../pagination.total empty="No posts" singular="% post" plural="% posts"}}</li>
+            {{#if location}}<li title="Location"><address>{{location}}</address></li>{{/if}}
+            {{#if facebook}}<li><a href="{{facebook}}" title="Facebook" target="_blank" rel="noopener">{{readable_url facebook}}</a></li>{{/if}}
+            {{#if twitter}}<li><a href="{{twitter}}" title="X &lpar;formerly Twitter&rpar;" target="_blank" rel="noopener">{{readable_url twitter}}</a></li>{{/if}}
+            {{#if website}}<li><a href="{{website}}" title="Personal website" target="_blank" rel="noopener">{{readable_url website}}</a></li>{{/if}}
         </ul>
+        {{#if bio}}<p title="Biography">{{bio}}</p>{{/if}}
     </hgroup>
 </section>
 {{/author}}
@@ -27,4 +26,5 @@
     {{> "loop"}}
 </main>
 {{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
+{{> "cta-newsletters" heading="Sign up now"}}
 {{/is}}
