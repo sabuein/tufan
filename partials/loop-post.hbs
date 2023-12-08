@@ -1,9 +1,9 @@
 <!-- partials/loop-post.hbs -->
 <section class="looping flexy gapy-half width-full">
     <hgroup class="flexy">
-        <h3 id="might-like" title="You might also like">You might also like&colon;</h3>
+        <h3 id="might-like" title='{{t "You might also like"}}'>{{t "You might also like"}}&colon;</h3>
     </hgroup>
     {{#get "posts" visibility="all" filter="featured:false" limit=@config.posts_per_page as |article|}}<ol class="flexy gapy-half content-width">
-        {{#if article}}{{#foreach article}}<li data-index="{{@index}}" data-number="{{@number}}"><a href="{{url}}">{{title}}</a></li>{{/foreach}}{{else}}<li>There were no posts&hellip;</li>{{/if}}
+        {{#if article}}{{#foreach article}}<li data-index="{{@index}}" data-number="{{@number}}"><a href="{{url}}" title="{{title}}">{{title}}</a></li>{{/foreach}}{{else}}<li title='{{t "There were no posts"}}'>{{t "There were no posts"}}&hellip;</li>{{/if}}
     </ol>{{/get}}
 </section>

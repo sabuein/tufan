@@ -1,6 +1,11 @@
 <!-- partials/social-media.hbs -->
-<li class="social-icon"><a href="https://github.com/sabuein/tufan" title="GitHub" class="flexy" target="_blank" rel="noopener">
-{{> "icons/github"}}
-</a></li>
-{{#if @site.facebook}}<li class="social-icon"><a href="{{facebook_url @site.facebook}}" title="Facebook" class="flexy" target="_blank" rel="noopener">F</a></li>{{/if}}
-{{#if @site.twitter}}<li class="social-icon"><a href="{{twitter_url @site.twitter}}" title="X &lpar;formerly Twitter&rpar;" class="flexy" target="_blank" rel="noopener">X</a></li>{{/if}}
+<ul class="social-icons flexy" role="menu">
+    <li><a href="https://github.com/sabuein/tufan" title='{{t "GitHub"}}' class="flexy" target="_blank" rel="noopener">
+    {{> "icons/github"}}
+    </a></li>
+    <li><a href="{{@site.url}}/ghost/#/dashboard/" title='{{t "Ghost"}}' class="flexy" target="_blank" rel="noopener">
+    {{> "icons/ghost"}}
+    </a></li>
+    {{#if @site.facebook}}<li><a href="{{facebook_url @site.facebook}}" title='{{t "Facebook"}}' class="flexy" target="_blank" rel="noopener">{{t "Facebook"}}</a></li>{{/if}}
+    {{#if @site.twitter}}<li><a href="{{twitter_url @site.twitter}}" title='{{t "X &lpar;formerly Twitter&rpar;"}}' class="flexy" target="_blank" rel="noopener">{{t "X"}}</a></li>{{/if}}
+</ul>
