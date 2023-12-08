@@ -1,73 +1,13 @@
 {
-    "Back": "العودة",
-    "Newer posts": "أجدد",
-    "Older posts": "أقدم",
-    "Page {page} of {pages}": "صفحة {page} من {pages}",
-    "Page": "صفحة",
-    "of": "من",
-    "Subscribe": "اشترك معنا",
-    "Subscribe to {blogtitle}": "اشترك في {blogtitle}",
-    "Subscribed!": "تم الاشتراك بنجاح!",
-    "with the email address": "with the email address",
-    "Your email address": "Your email address",
-    "You've successfully subscribed to": "You've successfully subscribed to",
-    "A collection of posts": "A collection of posts",
-    "A collection of 1 post": "A collection of 1 post",
-    "A collection of % posts": "A collection of % posts",
-    "Get the latest posts delivered right to your inbox": "Get the latest posts delivered right to your inbox",
-    "Latest Posts": "Latest Posts",
-    "<a href='{url}'>More posts</a> by {name}": "<a href='{url}'>More posts</a> by {name}",
-    "No posts": "No posts",
-    "(Page %)": "(Page %)",
-    "Read More": "Read More",
-    "Read <a href='{url}'>more posts</a> by this author": "Read <a href='{url}'>more posts</a> by this author",
-    "See all % posts": "See all % posts",
-    "Share this": "Share this",
-    "Stay up to date! Get all the latest & greatest posts delivered straight to your inbox": "Stay up to date! Get all the latest & greatest posts delivered straight to your inbox",
-    "This post was a collaboration between": "This post was a collaboration between",
-    "youremail@example.com": "youremail@example.com",
-    "1 post": "1 post",
-    "% posts": "% posts",
-    "1 min read": "1 min read",
-    "% min read": "% min read",
-    "Add to cart": "🛒 أضف إلى سلة التسوق",
-    "Account": "الحساب الشخصي",
-    "Login": "تسجيل الدخول",
-    "Price": "السعر",
-    "Israeli Shekel": "شيكل إسرائيلي جديد",
-    "Sorry, there are no products in this collection": "نعتذر منكم، ما في منتجات على هذا الرف.",
-    "Number of items": "عدد الأصناف",
-    "Checkout": "سلة التسوق",
-    "Total price": "🛒 الإجمالي",
-    "Cake": "🍰 كيك",
-    "News and updates": "📰 شو في ما في؟",
-    "Pies": "🥧 فطاير",
-    "Open buffet": "🧁 بوفيه مفتوح",
-    "Go right": "👉 عل اليمين",
-    "Go left": "عل الشمال 👈",
-    "Show/hide shopping cart": "إخفاء/إظهار سلة التسوق",
-    "Portal links": "روابط البوابة",
-    "Discussion": "تعالو نتخرف ونبرم عن اللي هون",
-    "Community guidelines": "القواعد العرفية للمجتمع",
-    "Please pay attention to our": "ندعوكم إلى قراءة وتفهم",
-    "Join the members discussion below&colon;": "شاركونا آرائكم وتعليقاتكم واستفساراتكم واقتراحاتكم في القسم التحتاني&colon;",
-    "No comments": "&lpar;لهلأ، ما في ولا تعليق&rpar;",
-    "comment": "تعليق",
-    "comments": "تعليقات",
-    "Featured": "لسّا طازة",
-    "Back to top": "إلى الأعلى",
-    "Save document": "حفظ الملف",
-    "Previous": "السابق",
-    "Next": "التالي",
-    "Only a minute": "بحدود الدقيقة",
-    "Takes % minutes": "تقريباً % دقائق",
-    "Before leaving a comment, please read our {link}{second}{third}{second}{last}": "قبل القيام بنشر تعليق، يرجى قراءة {link}{second}{third}{second}{last} والموافقة عليها",
-    "Search": "ابحث",
-    "XML Sitemap": "خارطة الموقع",
+    "Back to top": "الرجوع إلى القمة",
+    "Search": "البحث",
+    "Ghost": "جوست",
     "Facebook": "فيسبوك",
     "TikTok": "تيك توك",
     "LinkedIn": "لينكد إن",
     "Twitter": "تويتر",
+    "X": "إكس",
+    "X &lpar;formerly Twitter&rpar;": "إكس &lpar;تويتر سابقاً&rpar;",
     "Pinterest": "بنترست",
     "Snapchat": "سناب شات",
     "GitHub": "جيت هب",
@@ -75,21 +15,115 @@
     "WhatsApp": "واتساب",
     "Telegram": "تيليجرام",
     "YouTube": "يوتيوب",
-    "Follow {us} Our handle is {handle}": "ما تنسو تلحقو {us} على المنصات الاجتماعية المختلفة&period; إحنا هناك تحت الاسم&colon; {handle}&period;",
-    "Beautiful life": "الحياة حلوة",
-    "With": "&nbsp;بكثيرِ من&nbsp;",
-    "from": "&nbsp;من&nbsp;",
-    "We love you": "بنحبكم كثير",
-    "United Kingdom": "المملكة المتحدة",
-    "Occupied Falastin": "فلسطين المحتلة",
-    "a lot of love": "الحب",
-    "and": "&nbsp;و",
-    "You should totally sign up": "عنجد ومن غير حلفان&comma; لازم تشتركو معنا",
-    "Sign in": "تسجيل الدخول",
-    "Sign up": "فتح حساب",
+    "Portal links": "روابط البوابة",
+    "Community guidelines": "إرشادات المجتمع",
+    "Join the discussion": "اشتركوا في النقاش",
+    "comment": "تعليق",
+    "comments": "تعليقات",
+    "There were no comments": "لا يوجد تعليقات",
+    "There were no tags": "لا يوجد وسوم",
+    "No comments": "&lpar;لا تعليقات&rpar;",
+    "Discussion": "النقاش",
+    "Recommendations": "التوصيات",
+    "Name": "الاسم",
+    "Please enter your full name": "يرجى إدخال الاسم الكامل",
+    "Email": "البريد الإلكتروني",
+    "Please enter a valid email address": "يرجى إدخال بريد إلكتروني فعّال",
+    "Subscribe to": "اشترك في",
+    "Subscribe to {newsletter}": "اشترك في {newsletter}",
+    "There were no newsletters": "لا يوجد أي مجموعات بريدية",
+    "Reset": "إعادة",
+    "Subscribe": "اشتراك",
+    "A collection of posts": "مجموعة من المشاركات",
+    "A collection of 1 post": "مجموعة تحتوي على مشاركة واحدة",
+    "A collection of % posts": "مجموعة تحتوي على عدد % من المشاركات",
+    "Excerpt": "مقتطف",
+    "Custom excerpt": "مقتطف خاص",
+    "Posts count": "عدد المشاركات",
+    "Newer post": "مشاركة لاحقة",
+    "Older post": "مشاركة سابقة",
+    "Page {page} of {pages}": "صفحة {page} من {pages}",
+    "More posts by this author": "مشاركات أخرى من نفس المؤلف",
+    "There were no more posts by this author": "لا يوجد مشاركات أخرى من نفس المؤلف",
+    "There were no featured posts": "لا يوجد مشاركات رئيسية",
+    "There were no posts": "لا يوجد مشاركات",
+    "No posts": "لا مشاركات",
+    "Total posts": "عدد المشاركات",
+    "1 post": "يحتوي على مشاركة واحدة فقط",
+    "% posts": "يحتوي على عدد % من المشاركات",
+    "Featured": "رئيسي",
+    "Featured posts": "مشاركات رئيسية",
+    "You might also like": "قد يعجبك أيضاً",
+    "Receive our latest content straight to your inbox": "احصلوا على أحدث محتوى لدينا مباشرة إلى صندوق البريد الوارد الخاص بكم",
+    "Subscribe for diverse content and updates": "اشتركوا للحصول على محتوى وتحديثات متنوعة",
+    "Sign up for a rich mix of content": "قوموا بالتسجيل للحصول على مزيج غني من المحتوى",
+    "Stay informed and enriched with our dynamic content updates": "ابقوا على اطلاع بتحديثات المحتوى لدينا",
+    "Continue reading": "اقرأ المزيد",
+    "Home": "الرئيسية",
+    "About": "من نحن؟",
+    "Contact": "إتصل بنا",
+    "Tags": "الوسوم",
+    "Developer guides": "مستندات المطوّر",
+    "Technology": "تكنولوجيا",
+    "Image caption": "وصف الصورة",
+    "Author": "الكاتب",
+    "Published": "تاريخ النشر",
+    "Updated": "آخر تحديث",
+    "Tagged in": "الوسوم",
+    "Time": "التاريخ",
+    "Hour": "الوقت",
+    "at": "في",
+    "and": "و",
+    "The end": "النهاية",
+    "Reading progress": "مؤشر القراءة",
+    "Reading time": "وقت القراءة",
+    "1 min read": "تستغرق دقيقة واحدة",
+    "% min read": "قد تستغرق % دقيقة",
+    "Page %": "صفحة %",
+    "Sign in": "الدخول",
+    "Sign up": "التسجيل",
     "Profile": "الملف الشخصي",
     "Portal": "البوابة",
-    "Copyright": "الحقوق محفوظة",
     "Change password": "تغيير كلمة السرّ",
-    "Under construction": "قيد الإنشاء"
+    "Under construction": "قيد الإنشاء",
+    "XML Sitemap": "خارطة الموقع 🌐",
+    "Total paid members": "عدد الأعضاء الممولين",
+    "Paid members": "الأعضاء الممولين",
+    "Total members": "عدد الأعضاء",
+    "Members": "الأعضاء",
+    "Copyright": "الحقوق محفوظة",
+    "Account": "الحساب الشخصي",
+    "Login": "تسجيل الدخول",
+    "Price": "السعر",
+    "public": "عام",
+    "private": "خاص",
+    "United Kingdom": "المملكة المتحدة",
+    "Occupied Palestine": "فلسطين المحتلة",
+    "Jenin": "جنين",
+    "Tubas": "طوباس",
+    "Tulkarm": "طولكرم",
+    "Nablus": "نابلس",
+    "Qalqilya": "قلقيلية",
+    "Salfit": "سلفيت",
+    "Ramallah and al-Bireh": "رام الله والبيرة",
+    "Jericho": "أريحا",
+    "Jerusalem": "القدس",
+    "Bethlehem": "بيت لحم",
+    "Hebron": "الخليل",
+    "North Gaza": "شمال غزة",
+    "Gaza": "غزة",
+    "Deir al-Balah": "دير البلح",
+    "Khan Yunis": "خان يونس",
+    "Rafah": "رفح",
+    "West Bank": "الضفة الغربية",
+    "Gaza Strip": "قطاع غزة",
+    "Occupied Palestinian Territories": "الأراضي الفلسطينية المحتلة",
+    "Tufan al-Aqsa": "طوفان الأقصى",
+    "Copy post URL": "نسخ رابط المشاركة",
+    "Copy page URL": "نسخ رابط الصفحة",
+    "Copy contributor URL": "نسخ رابط الكاتب",
+    "Copy topic URL": "نسخ رابط الوسم",
+    "Description": "الوصف",
+    "Accent color": "لون الخلفية",
+    "Here are a few other sites you may enjoy": "إليكم بعض المواقع الهادفة التي ننصح بتصفحها"
 }
