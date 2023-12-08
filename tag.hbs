@@ -9,12 +9,13 @@
     }
 </style>{{/if}}
 <section class="flexy row palette">
-    {{#if feature_image}}<figure class="flexy has-bg" style="{{#if accent_color}}background-color: {{accent_color}}; {{/if}}background-image: url({{img_url feature_image absolute='true'}})">
-        <img src="{{img_url feature_image absolute='true'}}" alt="{{title}}" />
+    {{#if feature_image}}<figure class="flexy has-bg" style="{{#if accent_color}}background-color: {{accent_color}}; {{/if}}background-image: url({{img_url feature_image absolute='true'}})" title="{{t name}}">
+        <img src="{{img_url feature_image absolute='true'}}" alt="{{title}}" loading="lazy" onerror="this.style.display='none';" />
     </figure>{{/if}}
     <hgroup class="flexy start gapy-half">
-        <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}" title="{{name}}"><a href="{{url absolute='true'}}" title="Copy topic URL" type="text/html">&#128279;</a><span title="{{name}}">{{name}}</span></h2>
-        {{#if description}}<p class="width-full">{{description}}</p>{{else}}A collection of {{plural ../pagination.total empty="zero posts" singular="% post" plural="% posts"}}&period;{{/if}}
+        <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}"><a href="{{url absolute='true'}}" title="{{t 'Copy topic URL'}}" type="text/html">&#128279;</a><span title="{{t name}}">{{t name}}</span></h2>
+        {{#if description}}<p class="width-full" title="{{t 'Description'}}">{{description}}</p>{{else}}{{{t "A collection of {{plural ../pagination.total empty='posts' singular='1 post' plural='% posts'}}"}}}&period;{{/if}}
+        <p title="{{t 'Total posts'}}">{{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}</p>
     </hgroup>
 </section>
 {{> "loop-feature"}}
@@ -24,5 +25,5 @@
     {{> "loop"}}
 </main>
 {{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
-{{> "cta-newsletters" heading="Sign up for a rich mix of content"}}
+{{> "cta-newsletters" heading=(t "Sign up for a rich mix of content")}}
 {{/is}}

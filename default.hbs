@@ -15,26 +15,65 @@
         <link rel="stylesheet" href="{{asset "css/screen.css"}}" type="text/css" media="screen" />
         <link rel="stylesheet" href="{{asset "css/media.css"}}" type="text/css" media="screen" />
         <script type="module" src="{{asset "js/application.mjs"}}"></script>
-        <title>{{#is "home"}}{{@site.title}} &#8211; {{@site.description}}{{else is "page, post"}}{{meta_title}} &#8211; {{@site.title}}{{else}}{{meta_title}}{{/is}}</title>
+        {{!-- {{@site.icon}} --}}
+        <style type="text/css">
+            :root {
+                --accent-color: {{@site.accent_color}};
+            }
+        </style>
+        <title>{{#is "home"}}{{@site.title}} &#8211; {{@site.description}}{{else is "page, post"}}{{meta_title page=(t "Page %")}} &#8211; {{@site.title}}{{else}}{{meta_title page=(t "Page %")}}{{/is}}</title>
         {{ghost_head}}
     </head>
     <body class="{{body_class}} flexy">
-        <header class="flexy gapy-half start width-full">
-            {{#if @site.logo}}<figure id="site-logo" class="site-logo">
-                <a href="{{@site.url}}" title="{{@site.title}}"><img src="{{@site.logo}}" alt="{{@site.title}}" /></a>
-            </figure>{{else}}<h1><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a></h1>
-            <h2 id="site-description" title="{{@site.description}}">{{@site.description}}</h2>{{/if}}
-            {{#if @site.navigation}}{{navigation}}{{/if}}
+        {{#is "home"}}{{#if @site.cover_image}}<figure id="site-cover" class="site-cover flexy width-full">
+            <img src="{{@site.cover_image}}" alt="{{@site.title}}" loading="lazy" onerror="this.style.display='none';" />
+            <figcaption class="flexy start"><a href="#top" title="{{@site.title}}">{{@site.title}}</a>{{#if @site.description}}<span title="{{t 'Description'}}">{{@site.description}}</span>{{/if}}</figcaption>
+        </figure>{{/if}}{{/is}}
+        <header id="top" class="site-logo flexy gapy-1 width-full">
+            <div class="flexy gapy-1 row justify-content content-width">
+                {{#if @site.logo}}<figure id="site-logo">
+                    <a href="{{@site.url}}" title="{{@site.title}}" class="flexy"><img src="{{@site.logo}}" alt="{{@site.title}}" loading="lazy" onerror="this.style.display='none';" /></a>
+                </figure>{{/if}}
+                <div class="text flexy">
+                    <h1><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a></h1>
+                    {{#if @site.description}}<h2 id="site-description" title="{{@site.description}}">{{@site.description}}</h2>{{/if}}
+                </div>
+            </div>
+            {{#if @site.navigation}}{{navigation}}{{else}}<nav class="flexy row content-width">{{search}}</nav>{{/if}}
         </header>
         {{{body}}}
-        <footer class="flexy gapy-1 width-full">
-            <div class="flexy row gapy-2">
-                <p class="flexy row gapy-half"><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a><span title="Copyright">&copy;</span><span title="{{date format="YYYY"}}">{{date format="YYYY"}}</span></p>
-                <p title="Total members">Members&colon; {{total_members}}</p>
-                <p title="Total paid members">Paid members&colon; {{total_paid_members}}</p>
+        <footer class="flexy width-full">
+            {{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{else}}
+            <nav class="flexy row content-width">
+                <ul class="flexy" role="menu">
+                    <li class="flexy" role="menuitem" title="{{t 'Search'}}">{{search}}</li>
+                </ul>
+                {{> "social-media"}}
+            </nav>{{/if}}
+            <div class="extra flexy row gapy-2">
+                <p class="flexy"><a href="{{@site.url}}" title="{{@site.title}}">{{@site.title}}</a><span title="{{t 'Copyright'}}">&copy;</span><span title="{{date format='YYYY'}}">{{date format="YYYY"}}</span></p>
+                <p class="flexy" title="{{t 'Total members'}}"><span title="{{t 'Members'}}">{{t "Members"}}&colon;</span><span title="{{total_members}}">{{total_members}}</span></p>
+                <p class="flexy" title="{{t 'Total paid members'}}"><span title="{{t 'Paid members'}}">{{t "Paid members"}}&colon;</span><span title="{{total_paid_members}}">{{total_paid_members}}</span></p>
+                <a href="#top" title="{{t 'Back to top'}}">&uparrow;</a>
             </div>
-            {{#if @site.secondary_navigation}}{{navigation type="secondary"}}{{/if}}
         </footer>
         {{ghost_foot}}
     </body>
 </html>
+{{!--
+
+# Portal
+
+data-portal="recommendations"
+data-portal="signup"
+
+<form data-members-form="subscribe"
+
+# Helpers
+{{readable_url rec.url}}
+{{readable_url URL}}
+{{t}}
+{{t "Subscribe to {blogtitle}" blogtitle=@site.title}}
+{{{t "Proudly published with {ghostlink}" ghostlink="<a href=\"https://ghost.org\">Ghost</a>"}}}
+
+--}}
