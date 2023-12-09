@@ -99,6 +99,7 @@
     "private": "Private",
     "United Kingdom": "United Kingdom",
     "Occupied Palestine": "Occupied Palestine",
+    "Palestine": "Palestine",
     "Jenin": "Jenin",
     "Tubas": "Tubas",
     "Tulkarm": "Tulkarm",
@@ -125,5 +126,17 @@
     "Copy topic URL": "Copy topic URL",
     "Description": "Description",
     "Accent color": "Accent color",
-    "Here are a few other sites you may enjoy": "Here are a few other sites you may enjoy"
+    "Here are a few other sites you may enjoy": "Here are a few other sites you may enjoy",
+    "Personal website": "Personal website",
+    "Location": "Location",
+    "Biography": "Biography",
+    "Sign up now": "Sign up now",
+    "Total author posts": "Total author posts",
+    "No author posts": "No author posts",
+    "% author post": "% author post",
+    "% author posts": "% author posts",
+    "Cover image": "Cover image",
+    "Profile image": "Profile image",
+    "London, UK": "London, United Kingdom",
+    "Error": "Error"
 }
