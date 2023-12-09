@@ -14,8 +14,8 @@
     </figure>{{/if}}
     <hgroup class="flexy start gapy-half">
         <h2 class="flexy row start-content gapy-half width-full" id="{{slug}}"><a href="{{url absolute='true'}}" title="{{t 'Copy topic URL'}}" type="text/html">&#128279;</a><span title="{{t name}}">{{t name}}</span></h2>
+        <span title="{{t 'Total posts'}}">{{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}</span>
         {{#if description}}<p class="width-full" title="{{t 'Description'}}">{{description}}</p>{{else}}{{{t "A collection of {{plural ../pagination.total empty='posts' singular='1 post' plural='% posts'}}"}}}&period;{{/if}}
-        <p title="{{t 'Total posts'}}">{{plural ../pagination.total empty=(t "No posts") singular=(t "1 post") plural=(t "% posts")}}</p>
     </hgroup>
 </section>
 {{> "loop-feature"}}

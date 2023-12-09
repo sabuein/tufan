@@ -4,6 +4,6 @@
         <h3 id="all-tags" title="{{t 'Tags'}}">{{t "Tags"}}&colon;</h3>
     </hgroup>
     <div class="flexy gapy-half content-width">
-        {{#get "tags" visibility="all" include="count.posts" order="count.posts desc" limit=@config.posts_per_page}}{{#foreach tags}}<p class="flexy row gapy-half" data-index="{{@index}}" data-number="{{@number}}"><span title="{{t this.visibility}}">{{t this.visibility}}</span><input type="color" value="{{accent_color}}" title="{{t 'Accent color'}}" /><a href="{{url}}" title="{{t name}}">{{t name}}</a><span title="{{t 'Posts count'}}">&lpar;{{count.posts}}&rpar;</span></p>{{else}}<p title="{{t 'There were no tags'}}">{{t "There were no tags"}}&hellip;</p>{{/foreach}}{{/get}}
+        {{#get "tags" visibility="all" include="count.posts" order="count.posts desc" limit=@config.posts_per_page}}{{#foreach tags}}<p class="flexy row gapy-half" data-index="{{@index}}" data-number="{{@number}}"><span class="visibility" title="{{t this.visibility}}">{{t this.visibility}}</span><input type="color" value="{{accent_color}}" title="{{t 'Accent color'}}" class="color" /><a href="{{url}}" title="{{t name}}" class="tag-name">{{t name}}</a><span class="count" title="{{t 'Posts count'}}">&lpar;{{count.posts}}&rpar;</span></p>{{else}}<p title="{{t 'There were no tags'}}">{{t "There were no tags"}}&hellip;</p>{{/foreach}}{{/get}}
     </div>
 </section>
