@@ -1,3 +1,6 @@
+"use strict";
+// modules/mail.mjs
+
 const formData = require('form-data');
 const Mailgun = require('mailgun.js');
 const mailgun = new Mailgun(formData);
