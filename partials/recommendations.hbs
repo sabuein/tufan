@@ -1,6 +1,6 @@
 <!-- partials/recommendations.hbs -->
 {{#if recommendations}}<ol class="recommendations flexy content-width">
-    {{#each recommendations as |rec|}}<li class="recommendation flexy width-full"><a href="{{rec.url}}" data-recommendation="{{rec.id}}" title="{{rec.title}}" target="_blank" rel="noopener" class="recommendation-url flexy">
+    {{#each recommendations as |rec|}}<li class="recommendation flexy width-full"><a href="{{rec.url}}?ref={{readable_url @site.url}}" data-recommendation="{{rec.id}}" title="{{rec.title}}" target="_blank" rel="noopener" class="recommendation-url flexy">
         {{#if rec.favicon}}<figure class="recommendation-favicon flexy" title="{{rec.title}}">
             <img src="{{rec.favicon}}" alt="{{rec.title}}" loading="lazy" onerror="this.style.display='none';" />
         </figure>{{/if}}

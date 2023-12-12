@@ -7,7 +7,11 @@
         --accent-color: {{accent_color}};
         --brandcolor: {{accent_color}};
     }
-</style>{{/if}}
+
+    *.kg-button-card a.kg-btn-accent {
+        background-color: {{accent_color}};
+    }
+</style>{{else}}<span style="display: none;">No accent color</span>{{/if}}
 <section class="flexy row palette">
     {{#if feature_image}}<figure class="flexy has-bg" style="{{#if accent_color}}background-color: {{accent_color}}; {{/if}}background-image: url({{img_url feature_image absolute='true'}})" title="{{t name}}">
         <img src="{{img_url feature_image absolute='true'}}" alt="{{title}}" loading="lazy" onerror="this.style.display='none';" />
@@ -19,11 +23,9 @@
     </hgroup>
 </section>
 {{> "loop-feature"}}
-{{!--{{#tag}}{{> "loop-posts"}}{{/tag}}--}}
 <main id="content" class="{{post_class}} flexy width-full" role="main">
     {{#has slug="opt"}}{{> "governorates-filters"}}{{/has}}{{/tag}}
     {{> "loop"}}
 </main>
 {{#match pagination.pages ">" 1}}{{pagination}}{{/match}}
-{{> "cta-newsletters" heading=(t "Sign up for a rich mix of content")}}
 {{/is}}
