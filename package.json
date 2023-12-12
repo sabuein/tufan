@@ -9,7 +9,7 @@
     },
     "author": {
         "name": "Salaheddin AbuEin",
-        "email": "sabuein@gmail.com",
+        "email": "web@support.tufan.uk",
         "url": "https://sabuein.github.io/"
     },
     "screenshots": {
@@ -23,13 +23,16 @@
         "card_assets": true
     },
     "scripts": {
-        "link": "ln -s /home/sabuein/my/projects/rapid-is /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
+        "link": "ln -s /home/sabuein/my/projects/tufan /home/sabuein/my/instances/ghost/content/themes | ls ../../instances/ghost/content/themes/",
         "test": "npx gscan .",
         "start": "ghost start -d ~/my/instances/ghost/",
         "restart": "ghost restart -d ~/my/instances/ghost/",
         "stop": "ghost stop -d ~/my/instances/ghost/",
         "update": "ghost update -d ~/my/instances/ghost/",
         "debug": "ghost run -D -d ~/my/instances/ghost/",
+        "log": "ghost log -d ~/my/instances/ghost/",
+        "ls": "ghost ls",
+        "help": "ghost help",
         "zip": "zip -r /home/sabuein/Desktop/tufan.zip * -x *.zip /assets/labs/* .gitignore"
     },
     "keywords": [
