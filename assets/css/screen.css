@@ -6,6 +6,11 @@
 
 /* Globals */
 
+::backdrop {
+    background-image: linear-gradient(45deg, magenta, rebeccapurple, dodgerblue, green);
+    opacity: 0.75;
+}
+
 * {
     background-color: inherit;
 }
@@ -32,8 +37,8 @@
 :root {
     --brand-color: #1d70b8;
     --success-color: #00703c;
-    --error-color:	#d4351c;
-    --focus-text-color:	#0b0c0c;
+    --error-color: #d4351c;
+    --focus-text-color: #0b0c0c;
     --focus-color: #ffdd00;
     --input-border-color: #0b0c0c;
     --border-color: #b1b4b6;
@@ -50,7 +55,8 @@
 }
 
 html:has(#sodo-search-root:not(:empty)),
-html:has(#ghost-portal-root > div) {
+html:has(#ghost-portal-root > div),
+html:has(dialog[open]) {
     overflow-y: clip;
 }
 
@@ -72,6 +78,107 @@ script {
     display: none;
 }
 
+dialog[open] {
+    position: fixed;
+    margin: 0 auto;
+    inset: 0;
+    user-select: text;
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+    visibility: visible;
+}
+
+dialog {
+    user-select: none;
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+    visibility: hidden;
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out, overlay 0.7s ease-out allow-discrete, display 0.7s ease-out allow-discrete;
+    /* Equivalent to transition: all 0.7s allow-discrete; */
+}
+
+@starting-style {
+    dialog[open] {
+        user-select: none;
+        opacity: 0;
+        transform: scaleY(0);
+        display: none;
+        visibility: hidden;
+    }
+}
+
+dialog::backdrop {
+    background-color: rgb(0 0 0 / 0);
+    transition: display 0.7s allow-discrete, overlay 0.7s allow-discrete, background-color 0.7s;
+    /* Equivalent to transition: all 0.7s allow-discrete; */
+}
+
+dialog[open]::backdrop {
+    background-color: rgb(0 0 0 / 0.25);
+}
+
+@starting-style {
+    dialog[open]::backdrop {
+        background-color: rgb(0 0 0 / 0);
+    }
+}
+
+/*
+
+dialog {
+  animation: fade-out 0.7s ease-out;
+}
+
+dialog[open] {
+  animation: fade-in 0.7s ease-out;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-fade-in 0.7s ease-out forwards;
+}
+
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: scaleY(0);
+      display: none;
+    }
+  
+    100% {
+      opacity: 1;
+      transform: scaleY(1);
+      display: block;
+    }
+  }
+  
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+      transform: scaleY(1);
+      display: block;
+    }
+  
+    100% {
+      opacity: 0;
+      transform: scaleY(0);
+      display: none;
+    }
+  }
+  
+  @keyframes backdrop-fade-in {
+    0% {
+      background-color: rgb(0 0 0 / 0);
+    }
+  
+    100% {
+      background-color: rgb(0 0 0 / 0.25);
+    }
+  }
+
+*/
+
 /* Classes */
 
 *.flexy {
@@ -80,22 +187,28 @@ script {
     flex-wrap: wrap;
     place-content: center;
     align-items: safe center;
+    gap: 0;
 }
 
 *.row {
     flex-direction: row;
 }
 
-p {
-    letter-spacing: .01rem;
-    word-break: break-word;
+*.fadeout-content {
+    -webkit-mask-image: linear-gradient(to bottom, var(--color-black) 1%, transparent 100%);
+    mask-image: linear-gradient(to bottom, var(--color-black) 1%, transparent 100%);
 }
 
 *.extra {
+    padding: 2rem;
+    color: var(--light-color);
+    background-color: var(--accent-color);
+    font-size: .9rem;
     user-select: none;
 }
 
-*.extra a:hover {
+*.extra a:is(:focus, :hover) {
+    color: inherit;
     text-decoration: none;
 }
 
@@ -106,7 +219,8 @@ p {
 }
 
 *.has-bg {
-    color: var(--light-color); /* Accent color should be dark */
+    color: var(--light-color);
+    /* Accent color should be dark */
     background-color: var(--accent-color);
     background-image: none;
     background-position: center center;
@@ -124,7 +238,7 @@ p {
     overflow: hidden;
 }
 
-*.author-template > *.has-bg {
+*.author-template>*.has-bg {
     background-attachment: fixed;
 }
 
@@ -134,7 +248,7 @@ p {
     transition: bottom 500ms linear 0s;
 }
 
-*.has-bg:hover figcaption {
+*.has-bg:is(:focus-within, :hover) figcaption {
     bottom: 0;
     transition: bottom 500ms linear 0s;
 }
@@ -144,7 +258,7 @@ p {
     color: var(--light-color);
 }
 
-*.has-bg figcaption a:hover {
+*.has-bg figcaption a:is(:focus, :hover) {
     text-decoration: underline;
 }
 
@@ -181,7 +295,7 @@ ul[role="menu"] a,
     transition: scale 250ms linear 0s;
 }
 
-ul[role="menu"] a:hover {
+ul[role="menu"] a:is(:focus, :hover) {
     text-decoration: none;
 }
 
@@ -193,11 +307,16 @@ footer ul[role="menu"] a {
     font-size: .85rem;
 }
 
-header ul[role="menu"] a:hover,
-footer ul[role="menu"] a:hover,
-*.search-box button:hover {
+header ul[role="menu"] a:is(:focus, :hover),
+footer ul[role="menu"] a:is(:focus, :hover),
+*.search-box button:is(:focus, :hover) {
     scale: 1.05;
     transition: scale 250ms linear 0s;
+}
+
+p {
+    letter-spacing: .01rem;
+    word-break: break-word;
 }
 
 main,
@@ -230,16 +349,7 @@ section {
     line-height: 1.5;
 }
 
-*.tag-name {
-    font-weight: 600;
-}
-
-
-*.tag-name:hover {
-    text-decoration: none;
-}
-
-*.meta a:hover {
+*.meta a:is(:focus, :hover) {
     text-decoration: none;
 }
 
@@ -270,7 +380,7 @@ footer span {
 /* Post */
 
 *.palette {
-    gap: 4rem;
+    gap: 3rem;
 }
 
 *.loopy,
@@ -325,13 +435,18 @@ footer span {
     justify-content: space-between;
 }
 
+*.site-icon {
+    width: fit-content;
+    user-select: none;
+}
+
 *.site-logo figure {
     width: 10rem;
     flex-basis: 10rem;
     user-select: none;
 }
 
-*.site-logo figure a:hover {
+*.site-logo figure a:is(:focus, :hover) {
     opacity: 1;
     color: var(--light-color);
 }
@@ -346,7 +461,7 @@ footer span {
     cursor: default;
 }
 
-*.site-logo *.text a:hover {
+*.site-logo *.text a:is(:focus, :hover) {
     text-decoration: none;
 }
 
@@ -374,7 +489,7 @@ footer span {
     cursor: default;
 }
 
-*.site-cover a:hover {
+*.site-cover a:is(:focus, :hover) {
     color: var(--light-color);
     text-decoration: none;
 }
@@ -388,12 +503,19 @@ body {
     font-size: 1rem;
     font-weight: 400;
     font-style: normal;
+    font-family: system-ui;
 }
 
 footer {
     position: relative;
-    padding: 1rem 2rem;
+}
+
+footer.flexy {
     gap: 2rem;
+}
+
+picture {
+    user-select: none;
 }
 
 img {
@@ -420,7 +542,7 @@ a:-webkit-any-link {
     transition: opacity 250ms linear 0s;
 }
 
-a:hover {
+a:is(:focus, :hover) {
     color: var(--accent-color);
     text-decoration: underline;
     opacity: .85;
@@ -435,12 +557,12 @@ header nav li {
     transition: all 250ms linear 0s;
 }
 
-header nav li:hover {
+header nav li:is(:focus-within, :hover) {
     background-color: var(--text-color);
     transition: all 250ms linear 0s;
 }
 
-header nav a:hover {
+header nav a:is(:focus, :hover) {
     color: inherit;
     opacity: 1;
 }
@@ -454,8 +576,8 @@ a[href="#top"] {
     line-height: 1;
 }
 
-body > a[href="#top"][type="text/html"]:any-link,
-body > a[href="#top"][type="text/html"]:-webkit-any-link {
+body>a[href="#top"][type="text/html"]:any-link,
+body>a[href="#top"][type="text/html"]:-webkit-any-link {
     position: fixed;
     bottom: 6rem;
     right: 3rem;
@@ -468,7 +590,7 @@ body > a[href="#top"][type="text/html"]:-webkit-any-link {
     transition: background-color 250ms linear 0s, opacity 250ms linear 250ms;
 }
 
-body > a[href="#top"][type="text/html"]:hover {
+body>a[href="#top"][type="text/html"]:is(:focus, :hover) {
     background-color: var(--accent-color);
     text-decoration: none;
     transition: background-color 250ms linear 0s, opacity 250ms linear 250ms;
@@ -480,9 +602,9 @@ body > a[href="#top"][type="text/html"]:hover {
     transition: fill 250ms linear 0s;
 }
 
-*.gh-search-icon:hover path,
-*.social-icons a:hover path,
-*.social-icons a:hover #Logo g g:nth-child(2) path {
+*.gh-search-icon:is(:focus, :hover) path,
+*.social-icons a:is(:focus, :hover) path,
+*.social-icons a:is(:focus, :hover) #Logo g g:nth-child(2) path {
     fill: var(--accent-color);
     transition: fill 250ms linear 0s;
 }
@@ -513,10 +635,20 @@ input {
     flex-grow: 1;
 }
 
+input::placeholder {
+    user-select: none;
+}
+
+button {
+    font-family: system-ui;
+    user-select: none;
+}
+
 input[type="submit"],
 input[type="reset"],
 a[type="text/html"]:any-link,
-a[type="text/html"]:-webkit-any-link {
+a[type="text/html"]:-webkit-any-link,
+button[type="button"] {
     padding: 1rem 1.5rem;
     color: var(--light-color);
     background-color: var(--accent-color);
@@ -529,9 +661,7 @@ a[type="text/html"]:-webkit-any-link {
     transition: opacity 250ms linear 0s;
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-a[type="text/html"]:hover {
+*:is(input[type="submit"], input[type="reset"], a[type="text/html"], button[type="button"]):is(:focus, :hover) {
     text-decoration: none;
     opacity: .75;
     transition: opacity 250ms linear 0s;
@@ -555,7 +685,6 @@ a[type="text/html"]:hover {
 }
 
 *.controls {
-    padding: 1rem 0 2rem;
     flex-direction: row;
     align-self: center;
     gap: 1.5rem;
@@ -573,8 +702,8 @@ h2 a[type="text/html"]:-webkit-any-link {
     user-select: none;
 }
 
-h2:hover a[type="text/html"]:any-link,
-h2:hover a[type="text/html"]:-webkit-any-link {
+h2:is(:focus-within, :hover) a[type="text/html"]:any-link,
+h2:is(:focus-within, :hover) a[type="text/html"]:-webkit-any-link {
     opacity: 1;
     transition: opacity 500ms linear 0s;
 }
@@ -584,18 +713,72 @@ input[type="checkbox"] {
     flex-grow: 0;
 }
 
-form[data-form="subscribe"] {
+*:where(*.loading, *.success, *.error),
+*:where(*.loading, *.success, *.error) p {
+    display: none;
+}
+
+*.loading *.loading,
+*.success *.success,
+*.error *.error,
+*.loading p:has(*[data-members-error]:not(:empty)),
+*.success p:has(*[data-members-error]:not(:empty)),
+*.error p:has(*[data-members-error]:not(:empty)) {
+    display: block;
+    flex-basis: 100%;
+    text-align: center;
+    line-height: 1.25;
+    font-size: .85rem;
+}
+
+form {
     max-width: 100%;
+}
+
+form[data-members-form="signin"] {
+    padding: 2rem 0;
+    flex-direction: row;
     gap: 1rem;
 }
 
-form[data-form="subscribe"] label {
+form[data-members-form="signin"] label {
+    flex-direction: row;
+    gap: .5rem;
+    font-weight: 600;
+}
+
+form[data-members-form="signin"] input {
+    padding: 1rem 1.5rem;
+    flex-grow: 0;
+}
+
+form[data-members-form="subscribe"] {
+    gap: 1rem;
+}
+
+form[data-members-form="subscribe"] label {
+    flex-direction: row;
     width: 100%;
+    gap: .5rem;
+}
+
+form[method="dialog"] {
+    gap: .5rem;
 }
 
 form label:has([type="checkbox"]) {
     width: fit-content;
     align-self: flex-start;
+}
+
+form label:has([type="checkbox"]:not(:checked)) {
+    font-weight: 400;
+    transition: font-weight 100ms linear 0s;
+}
+
+form label:has([type="checkbox"]:is(:focus, :hover, :checked)) {
+    font-weight: 600;
+    transition: font-weight 100ms linear 0s;
 }
 
 /* Progress bar*/
@@ -671,6 +854,15 @@ strong {
     padding: 0;
 }
 
+*.feedback {
+    user-select: none;
+    gap: 1rem;
+}
+
+*.feedback *:is(h3, p) {
+    cursor: default;
+}
+
 /* Required by Ghost (and more!) */
 
 *.content-width {
@@ -703,7 +895,7 @@ strong {
 }
 
 #recommendations,
-#recommendations + p {
+#recommendations+p {
     cursor: default;
 }
 
@@ -725,7 +917,7 @@ strong {
     gap: .25rem;
 }
 
-*.recommendation-url:hover {
+*.recommendation-url:is(:focus, :hover) {
     text-decoration: none;
 }
 
@@ -743,7 +935,7 @@ strong {
     transition: color 250ms linear 0s;
 }
 
-*.recommendation *.recommendation-url:hover p {
+*.recommendation *.recommendation-url:is(:focus, :hover) p {
     color: var(--accent-color);
     transition: color 250ms linear 0s;
 }
@@ -760,6 +952,6 @@ strong {
 }
 
 *.recommendation-title,
-a:hover *.recommendation-title {
+a:is(:focus, :hover) *.recommendation-title {
     transition: color 250ms linear 0s;
 }
