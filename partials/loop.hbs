@@ -1,6 +1,6 @@
 <!-- partials/loop.hbs -->
 <section class="flexy row start gapy-3 content-width">
-    {{#foreach posts visibility="all" limit=@config.posts_per_page}}<article class="{{post_class}} flexy row gapy-1 loopy" data-index="{{@index}}" title="{{title}}">
+    {{#foreach posts limit=@config.posts_per_page}}<article class="{{post_class}} flexy row gapy-1 loopy" data-index="{{@index}}" title="{{title}}">
         <hgroup class="flexy start-content gapy-half width-full">
             <h3 id="{{slug}}"><a href="{{url absolute='true'}}" title="{{title}}">{{title}}</a></h3>
         </hgroup>
@@ -12,3 +12,8 @@
         <a href="{{url absolute='true'}}" title="{{t 'Continue reading'}}" type="text/html" class="flexy" {{#primary_tag}}{{#if accent_color}}style="background-color: {{accent_color}};"{{/if}}{{/primary_tag}}>{{t "Continue reading"}}</a>
     </article>{{else}}<p class="get-posts-error" title="{{t 'Error'}}">{{t "Error"}}&colon; {{error}}</p>{{/foreach}}
 </section>
+<div class="flexy gapy-1">
+    {{#has visibility="paid"}}<span class="premium-label">Premium</span>{{/has}}
+    {{#has visibility="members"}}<span class="subscription-label">Membership</span>{{/has}}
+    {{#has visibility="public"}}<span class="subscription-label">Free</span>{{/has}}
+</div>

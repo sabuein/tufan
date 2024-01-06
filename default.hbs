@@ -113,15 +113,38 @@ data-members-form="signup" – Uses “sign up” in email text. If a valid emai
 data-members-form="subscribe" – Uses “subscription” in email text. If a valid email is present, a signin email is sent instead.
 data-members-autoredirect="false" - when set to false, the user will be redirected to the publication’s homepage when logging in. When set to true (the default), the user will be redirected to the page where they signed up.
 
+<a href="javascript:" data-members-edit-billing>Edit billing info</a>
+<a href="javascript:"
+  data-members-edit-billing
+  data-members-success="/billing-update-success/"
+  data-members-cancel="/billing-update-cancel/"
+>Edit billing info</a>
+
+{{price}}
+{{price plan}}
+
+data-members-signout
+<a href="javascript:void(0);" data-members-signout>Sign out</a>
+
+<form data-members-form class="loading">...</form>
+<form data-members-form class="success">...</form>
+<form data-members-form class="error">...</form>
+
 *.loading
 *.error
 *.success
 
 data-members-name
 data-members-email
+
 data-members-error
-data-members-newsletter
+<!-- error message will appear here -->
+
 data-members-label
+
+data-members-newsletter
+<input data-members-newsletter type="hidden" value="Weekly Threads" />
+<input data-members-newsletter type="checkbox" value="Newsletter Two" />
 
 The @member object has a series of attributes that expose the information required to create a member profile page:
 
@@ -132,17 +155,11 @@ The @member object has a series of attributes that expose the information requir
 @member.firstname – The member’s first name (everything before the first whitespace character in the member’s full name)
 @member.uuid – A unique identifier for a member for use with analytics tracking such as Google Tag Manager
 
-{{#foreach @member.subscriptions}}
-  <p>Name: <strong>{{customer.name}}</strong></p>
-  <p>Plan type: <strong>{{plan.nickname}}</strong></p>
-  <p>Status: <strong>{{status}}</strong></p>
-{{/foreach}}
+The {{cancel_link}} helper accepts a number of optional attributes:
 
-# Helpers
-{{readable_url rec.url}}
-{{readable_url URL}}
-{{t}}
-{{t "Subscribe to {blogtitle}" blogtitle=@site.title}}
-{{{t "Proudly published with {ghostlink}" ghostlink="<a href=\"https://ghost.org\">Ghost</a>"}}}
+class - defaults to gh-subscription-cancel
+errorClass - defaults to gh-error gh-error-subscription-cancel
+cancelLabel - defaults to Cancel subscription
+continueLabel - defaults to Continue subscription
 
 --}}
