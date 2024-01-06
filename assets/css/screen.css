@@ -358,8 +358,7 @@ section {
 *.meta strong,
 *.meta address,
 *.meta time,
-footer p,
-footer span {
+footer p {
     cursor: default;
 }
 
@@ -476,7 +475,7 @@ footer span {
 }
 
 *.site-cover figcaption {
-    padding: 5rem;
+    padding: 2rem 4rem;
     inset: 0;
     left: unset;
     right: 10rem;

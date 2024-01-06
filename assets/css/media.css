@@ -1,4 +1,5 @@
-/* Change layout at larger viewport sizes */
-@media (min-width: 768px) {
-    
+@media (max-width: 768px) {
+    nav:has(ul[role="menu"]) {
+        justify-content: center;
+    }   
 }
